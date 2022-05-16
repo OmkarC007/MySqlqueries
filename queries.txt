@@ -1,0 +1,38 @@
+use brp;
+CREATE TABLE Person1(  
+        Person_id int NOT NULL PRIMARY KEY,  
+        name varchar(45) NOT NULL,  
+        age int,  
+        City varchar(25)  
+); 
+INSERT INTO person1 VALUES(1,'Vaibhav',24,'banglore'), (2,'Arjun',23,'Mumbai'),(3,'Saurabh', 25,'Delhi');
+select * from Person1;
+CREATE TABLE Orders(  
+        Order_Id int NOT NULL PRIMARY KEY,  
+        order_nnum varchar(45) NOT NULL,  
+        Person_Id int,  
+        foreign key (Person_id) references Person1(Person_id)  
+); 
+insert into Orders values(1,100,1),(2,101,2),(3,101,2); 
+select * from orders where Person_id = 2;
+select name, person_id, order_id from orders where person_id = 2;
+
+/** TRUNCATE AND DROP**/
+Create table Engineers(
+		id int primary key,
+        name varchar(30) unique,
+        city varchar(20) unique
+);
+desc engineers;
+insert into engineers values(1,'Omkar','Mumbai'),(2,'Divya','Pune'),(3,'Suraj','Worli');
+select * from engineers;
+truncate table engineers;
+drop table engineers;
+
+/** UPDATE**/
+update engineers set name = 'Pratiksha', city='Navi Mumbai' where id = 3;
+select * from engineers;
+alter table engineers 
+add Email varchar(30) unique;
+insert into engineers values(4,'Kiran','KK','kiran@gmail.com');
+update engineers set Email = 'pratiksha@gmail.com' where id = 3 ;
